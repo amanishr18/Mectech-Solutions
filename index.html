@@ -1,580 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MecTech Solutions - Solutions for Industrial Excellence</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary-color: #1e6b5c;
-            --secondary-color: #2d8b79;
-            --accent-color: #40b893;
-            --dark-bg: #0d3028;
-            --light-bg: #f0f9f6;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background: linear-gradient(135deg, #1e6b5c 0%, #2d8b79 100%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            animation: slideDown 0.5s ease-out;
-        }
-        
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-        }
-        
-        .logo-image {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .logo-image svg {
-            width: 60px;
-            height: 60px;
-        }
-        
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-color);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        /* Main Content */
-        main {
-            margin-top: 80px;
-            background: white;
-            border-radius: 30px 30px 0 0;
-            min-height: calc(100vh - 80px);
-            box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 4rem 0;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(30,107,92,0.1) 0%, rgba(64,184,147,0.1) 100%);
-            border-radius: 30px 30px 0 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(45,139,121,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInUp 0.8s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .tagline {
-            font-size: 1.3rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-            box-shadow: 0 4px 15px rgba(30,107,92,0.3);
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(30,107,92,0.4);
-        }
-        
-        /* Section Styles */
-        .section {
-            padding: 4rem 0;
-            animation: fadeIn 0.8s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            color: var(--primary-color);
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
-            border-radius: 2px;
-        }
-        
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            margin-top: 3rem;
-        }
-        
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-dark);
-        }
-        
-        .industries {
-            background: linear-gradient(135deg, rgba(64,184,147,0.1) 0%, rgba(45,139,121,0.1) 100%);
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-        
-        .industries h3 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        
-        .industries-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-        
-        .industry-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 0.8rem;
-            background: white;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .industry-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(30,107,92,0.2);
-        }
-        
-        .industry-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-        
-        .industry-name {
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-        
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-        }
-        
-        .service-image {
-            width: 100%;
-            height: 150px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 4rem;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-image::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-            animation: pulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-        
-        .service-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-        
-        .service-features {
-            list-style: none;
-            color: var(--text-light);
-            line-height: 1.8;
-        }
-        
-        .service-features li {
-            padding-left: 20px;
-            position: relative;
-            margin-bottom: 0.5rem;
-        }
-        
-        .service-features li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-        }
-        
-        /* Partners Section */
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .partner-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(30,107,92,0.1);
-        }
-        
-        .partner-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            background: linear-gradient(135deg, rgba(30,107,92,0.1), rgba(64,184,147,0.1));
-        }
-        
-        .partner-logo {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 1rem;
-            background: white;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            padding: 1rem;
-        }
-        
-        .partner-logo img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        
-        .partner-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        .partner-card p {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-        
-        .partner-card a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .partner-card a:hover {
-            color: var(--accent-color);
-        }
-        
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, rgba(30,107,92,0.05) 0%, rgba(64,184,147,0.05) 100%);
-            border-radius: 30px;
-            padding: 3rem;
-            margin: 2rem 0;
-        }
-        
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .contact-item:hover {
-            transform: translateX(10px);
-        }
-        
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark-bg);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 4rem;
-        }
-        
-        /* Mobile Responsive */
-        .mobile-menu {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary-color);
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-menu {
-                display: block;
-            }
-            
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .industries-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .logo-text {
-                font-size: 1.2rem;
-            }
-            
-            .logo-image {
-                width: 50px;
-                height: 50px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <header>
         <nav class="container">
             <a href="#home" class="logo">
                 <div class="logo-image">
-                    <!-- MecTech Logo styled representation -->
-                    <div style="width: 60px; height: 60px; position: relative; display: flex; align-items: center; justify-content: center;">
-                        <!-- Helmet shape -->
-                        <div style="position: absolute; width: 50px; height: 50px; border: 3px solid #1e6b5c; border-radius: 50% 50% 45% 45%; background: linear-gradient(180deg, transparent 50%, #1e6b5c 50%); opacity: 0.2;"></div>
-                        <!-- Gears inside -->
-                        <div style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <div style="color: #1e6b5c; font-size: 24px; font-weight: bold;">⚙</div>
-                        </div>
-                        <!-- Head silhouette -->
-                        <div style="position: absolute; bottom: 5px; width: 30px; height: 20px; background: #1e6b5c; clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%); opacity: 0.3;"></div>
-                    </div>
+                    <img src="images/MecTech Logo.jpg.jpeg" alt="MecTech Solutions Logo"
+                        style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
                 <span class="logo-text">MecTech Solutions</span>
             </a>
@@ -603,9 +43,12 @@
                 <h2 class="section-title">About Us</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>At MecTech, we specialize in providing cutting-edge solutions that empower industries to achieve <strong>operational reliability, cost optimization, and environmental compliance</strong>.</p>
+                        <p>At MecTech, we specialize in providing cutting-edge solutions that empower industries to
+                            achieve <strong>operational reliability, cost optimization, and environmental
+                                compliance</strong>.</p>
                         <br>
-                        <p>Our <strong>customer-first approach</strong>, backed by a skilled technical team, ensures that we not only deliver products but also provide:</p>
+                        <p>Our <strong>customer-first approach</strong>, backed by a skilled technical team, ensures
+                            that we not only deliver products but also provide:</p>
                         <ul style="margin-top: 1rem; list-style: none;">
                             <li style="padding: 0.5rem 0;">✓ Application support</li>
                             <li style="padding: 0.5rem 0;">✓ Technical training</li>
@@ -665,20 +108,21 @@
                     <div class="service-card">
                         <div class="service-image">
                             <!-- Round Diffuser Icon -->
-                            <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <div
+                                style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
                                 <svg width="80" height="80" viewBox="0 0 80 80" style="color: white;">
-                                    <circle cx="40" cy="40" r="35" fill="none" stroke="currentColor" stroke-width="3"/>
-                                    <circle cx="40" cy="40" r="25" fill="none" stroke="currentColor" stroke-width="2"/>
-                                    <circle cx="40" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
-                                    <circle cx="40" cy="40" r="5" fill="currentColor"/>
+                                    <circle cx="40" cy="40" r="35" fill="none" stroke="currentColor" stroke-width="3" />
+                                    <circle cx="40" cy="40" r="25" fill="none" stroke="currentColor" stroke-width="2" />
+                                    <circle cx="40" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="2" />
+                                    <circle cx="40" cy="40" r="5" fill="currentColor" />
                                     <!-- Aeration bubbles -->
-                                    <circle cx="40" cy="20" r="2" fill="currentColor" opacity="0.7"/>
-                                    <circle cx="35" cy="25" r="1.5" fill="currentColor" opacity="0.6"/>
-                                    <circle cx="45" cy="25" r="1.5" fill="currentColor" opacity="0.6"/>
-                                    <circle cx="30" cy="35" r="2" fill="currentColor" opacity="0.5"/>
-                                    <circle cx="50" cy="35" r="2" fill="currentColor" opacity="0.5"/>
-                                    <circle cx="25" cy="45" r="1" fill="currentColor" opacity="0.4"/>
-                                    <circle cx="55" cy="45" r="1" fill="currentColor" opacity="0.4"/>
+                                    <circle cx="40" cy="20" r="2" fill="currentColor" opacity="0.7" />
+                                    <circle cx="35" cy="25" r="1.5" fill="currentColor" opacity="0.6" />
+                                    <circle cx="45" cy="25" r="1.5" fill="currentColor" opacity="0.6" />
+                                    <circle cx="30" cy="35" r="2" fill="currentColor" opacity="0.5" />
+                                    <circle cx="50" cy="35" r="2" fill="currentColor" opacity="0.5" />
+                                    <circle cx="25" cy="45" r="1" fill="currentColor" opacity="0.4" />
+                                    <circle cx="55" cy="45" r="1" fill="currentColor" opacity="0.4" />
                                 </svg>
                             </div>
                         </div>
@@ -693,22 +137,28 @@
                     <div class="service-card">
                         <div class="service-image">
                             <!-- Jet Spray Icon -->
-                            <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <div
+                                style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
                                 <svg width="80" height="80" viewBox="0 0 80 80" style="color: white;">
                                     <!-- Spray nozzle -->
-                                    <rect x="20" y="35" width="40" height="10" fill="currentColor" rx="5"/>
-                                    <rect x="15" y="38" width="10" height="4" fill="currentColor" rx="2"/>
+                                    <rect x="20" y="35" width="40" height="10" fill="currentColor" rx="5" />
+                                    <rect x="15" y="38" width="10" height="4" fill="currentColor" rx="2" />
                                     <!-- Spray jets -->
-                                    <path d="M65 30 L75 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                    <path d="M65 35 L75 25" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                    <path d="M65 40 L75 40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                    <path d="M65 45 L75 55" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                    <path d="M65 50 L75 60" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M65 30 L75 20" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
+                                    <path d="M65 35 L75 25" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
+                                    <path d="M65 40 L75 40" stroke="currentColor" stroke-width="3"
+                                        stroke-linecap="round" />
+                                    <path d="M65 45 L75 55" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
+                                    <path d="M65 50 L75 60" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
                                     <!-- Water droplets -->
-                                    <circle cx="68" cy="28" r="1" fill="currentColor" opacity="0.7"/>
-                                    <circle cx="72" cy="32" r="1.5" fill="currentColor" opacity="0.6"/>
-                                    <circle cx="70" cy="48" r="1" fill="currentColor" opacity="0.7"/>
-                                    <circle cx="73" cy="52" r="1.5" fill="currentColor" opacity="0.6"/>
+                                    <circle cx="68" cy="28" r="1" fill="currentColor" opacity="0.7" />
+                                    <circle cx="72" cy="32" r="1.5" fill="currentColor" opacity="0.6" />
+                                    <circle cx="70" cy="48" r="1" fill="currentColor" opacity="0.7" />
+                                    <circle cx="73" cy="52" r="1.5" fill="currentColor" opacity="0.6" />
                                 </svg>
                             </div>
                         </div>
@@ -734,16 +184,7 @@
                     <div class="partner-card">
                         <div class="partner-logo">
                             <!-- Colsen Logo styled representation -->
-                            <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; border-radius: 10px; padding: 10px;">
-                                <div style="font-size: 18px; font-weight: bold; color: #2c5282; letter-spacing: 1px;">Colsen</div>
-                                <div style="margin-top: 5px;">
-                                    <svg width="60" height="20" viewBox="0 0 60 20">
-                                        <path d="M0,10 Q15,0 30,10 T60,10" stroke="#2c5282" stroke-width="2" fill="none"/>
-                                        <path d="M0,15 Q15,5 30,15 T60,15" stroke="#4a90e2" stroke-width="2" fill="none"/>
-                                    </svg>
-                                </div>
-                                <div style="font-size: 9px; color: #666; margin-top: 3px;">water, energy & environment</div>
-                            </div>
+                            <img src="images/Colsen logo.png" alt="Colsen Logo">
                         </div>
                         <h3>Colsen</h3>
                         <p>Netherlands</p>
@@ -752,16 +193,7 @@
                     <div class="partner-card">
                         <div class="partner-logo">
                             <!-- Dryden Aqua Logo styled representation -->
-                            <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; border-radius: 10px; padding: 10px;">
-                                <div style="display: flex; align-items: center; gap: 5px;">
-                                    <div>
-                                        <div style="font-size: 16px; font-weight: 300; color: #666; letter-spacing: 2px;">DRYDEN</div>
-                                        <div style="font-size: 16px; font-weight: bold; color: #0066cc; letter-spacing: 2px;">AQUA</div>
-                                    </div>
-                                    <div style="width: 30px; height: 30px; background: linear-gradient(135deg, #0066cc, #00ccff); border-radius: 50% 0 50% 0; opacity: 0.7;"></div>
-                                </div>
-                                <div style="font-size: 8px; color: #999; margin-top: 5px;">TECHNOLOGY</div>
-                            </div>
+                            <img src="images/dryden logo.png" alt="Dryden Aqua Logo">
                         </div>
                         <h3>Dryden Aqua</h3>
                         <p>Switzerland</p>
@@ -770,22 +202,7 @@
                     <div class="partner-card">
                         <div class="partner-logo">
                             <!-- Ecopolymer Logo styled representation -->
-                            <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; border-radius: 10px; padding: 10px;">
-                                <div style="position: relative; width: 60px; height: 60px;">
-                                    <!-- Gear shape -->
-                                    <div style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                        <div style="width: 50px; height: 50px; border: 8px solid #666; border-radius: 50%; position: relative;">
-                                            <div style="position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 10px; height: 16px; background: #666;"></div>
-                                            <div style="position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 10px; height: 16px; background: #666;"></div>
-                                            <div style="position: absolute; left: -8px; top: 50%; transform: translateY(-50%); width: 16px; height: 10px; background: #666;"></div>
-                                            <div style="position: absolute; right: -8px; top: 50%; transform: translateY(-50%); width: 16px; height: 10px; background: #666;"></div>
-                                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: #e74c3c; border-radius: 50%;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div style="font-size: 11px; font-weight: bold; color: #333; margin-top: 5px;">ECOPOLYMER</div>
-                                <div style="font-size: 7px; color: #666;">MANUFACTURING AND TRADING</div>
-                            </div>
+                            <img src="images/ecoplymer logo.png" alt="Ecopolymer Logo">
                         </div>
                         <h3>Ecopolymer</h3>
                         <p>Russia</p>
@@ -845,54 +262,7 @@
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
+    <script src="js/script.js"></script>
+</body>
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    document.getElementById('navLinks').classList.remove('active');
-                }
-            });
-        });
-
-        // Add scroll effect to header
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.backdropFilter = 'blur(20px)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            }
-            
-            lastScroll = currentScroll;
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+</html>
